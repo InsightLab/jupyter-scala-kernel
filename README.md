@@ -1,10 +1,41 @@
-# almond
 
-*almond* is a [Scala](https://scala-lang.org) kernel for [Jupyter](https://jupyter.org).
+# Jupyter Scala Kernel
 
-[![Build Status](https://travis-ci.org/almond-sh/almond.svg?branch=master)](https://travis-ci.org/almond-sh/almond)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/4xg2mrvnttcxr4e8/branch/master?svg=true)](https://ci.appveyor.com/project/alexarchambault/almond/branch/master)
-[![Join the chat at https://gitter.im/alexarchambault/jupyter-scala](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alexarchambault/jupyter-scala?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Maven Central](https://img.shields.io/maven-central/v/sh.almond/kernel_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/sh.almond/kernel_2.12)
+This project is a fork from [almond scala kernel](https://almond.sh/). It is configured to run a simple version of the kernel, requiring no previous install or configuration.
 
-See the project [website](https://almond.sh/) for more details ([alternative address](https://almond-sh.github.io/almond)).
+## Requirements:
+
+* Python
+* sbt
+* Anaconda
+
+## Running
+
+To execute the kernel, just run ```./start-jupyter.sh```. You must be inside a conda environment that contains the Jupyter Notebook installed that will recognize the command ```jupyter notebook``` and start the notebook. The browser will open at the **user's home directory**.
+
+The kernel will be configured with Scala 2.12.8 and the kernel option will be named *Scala (sources)*.
+
+## Working with Spark
+
+To use [Spark]([https://spark.apache.org/](https://spark.apache.org/)) you must add this two lines at the notebook:
+```
+import $ivy.`org.apache.spark::spark-sql:2.4.0`
+import $ivy.`sh.almond::almond-spark:0.4.0
+```
+
+Those imports will download the Spark dependencies and the *almond-spark* that enables Spark to be used at the notebook. After, to create a Spark Context, just enter:
+```
+import org.apache.spark.sql._
+
+val spark = {
+  NotebookSparkSession.builder()
+    .master("local[*]")
+    .getOrCreate()
+}
+
+val sc = spark.sparkContext
+```
+
+## Working with PySpark
+
+To run pyspark just install it via conda: ```conda install pyspark```
