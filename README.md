@@ -20,7 +20,7 @@ The kernel will be configured with Scala 2.12.8 and the kernel option will be na
 To use [Spark]([https://spark.apache.org/](https://spark.apache.org/)) you must add this two lines at the notebook:
 ```
 import $ivy.`org.apache.spark::spark-sql:2.4.0`
-import $ivy.`sh.almond::almond-spark:0.4.0
+import $ivy.`sh.almond::almond-spark:0.4.0`
 ```
 
 Those imports will download the Spark dependencies and the *almond-spark* that enables Spark to be used at the notebook. After, to create a Spark Context, just enter:
