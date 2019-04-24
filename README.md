@@ -1,4 +1,3 @@
-
 # Jupyter Scala Kernel
 
 This project is a fork from [almond scala kernel](https://almond.sh/). It is configured to run a simple version of the kernel, requiring no previous install or configuration.
