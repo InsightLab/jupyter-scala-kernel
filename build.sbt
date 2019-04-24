@@ -222,7 +222,7 @@ jupyterDir := {
   baseDirectory.in(ThisBuild).value / "target" / "jupyter"
 }
 
-lazy val jupyterCommand = Seq("jupyter", "lab")
+lazy val jupyterCommand = Seq("jupyter-notebook",s"--notebook-dir=${System.getProperty("user.home")}")
 
 jupyterStart := {
   val pack0 = (pack.in(`scala-kernel`).value / "bin" / "scala-kernel").getAbsolutePath

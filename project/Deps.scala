@@ -18,7 +18,7 @@ object Deps {
   def fs2 = "co.fs2" %% "fs2-core" % "1.0.4"
   def jeromq = "org.zeromq" % "jeromq" % "0.5.0"
   def jvmRepr = "com.github.jupyter" % "jvm-repr" % "0.4.0"
-  def metabrowseServer = "org.scalameta" %% "metabrowse-server" % "0.2.2"
+  def metabrowseServer = "org.scalameta" %% "metabrowse-server" % "0.2.2" exclude("com.fasterxml.jackson.core", "jackson-databind")
   def scalaReflect = setting("org.scala-lang" % "scala-reflect" % scalaVersion.value)
   def scalaRx = "com.lihaoyi" %% "scalarx" % "0.4.0"
   def scalatags = "com.lihaoyi" %% "scalatags" % "0.6.7"
